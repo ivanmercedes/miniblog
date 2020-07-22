@@ -24,9 +24,8 @@ class PostController extends BaseController {
             'title'=> $_POST['title'],
             'content' => $_POST['content']
         ]);
-        $blogPost->save();
-        $result = true;
-            //return render('../views/admin/insert-post.php',['result'=>$result]);
+        $result = $blogPost->save();
+       
             return $this->view('admin/insert-post.twig',['result'=>$result]);
             
 
