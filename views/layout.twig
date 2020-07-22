@@ -22,21 +22,13 @@
 
         <div class="row">
             <div class="col-md-8">
-                <?php foreach($blogpost as $post ){ ?>
-                
-                <div class="blog-post">
-                    <h2><?= $post['title']; ?></h2>
-                    <p>Jan 1, 2020 by <a href="">Jose</a> </p>
-                    <div class="blog-post-image">
-                        <img class="img-fluid" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/12A9B/production/_111434467_gettyimages-1143489763.jpg" alt="">
-                    </div>
-                    <div class="blog-post-content">
-                        <p><?= $post['content']; ?></p>
-                    </div>
-                </div>
-                
-                
-                <?php } ?>
+
+             {% block content %}
+
+
+             {% endblock %}
+
+  
             </div>
             <div class="col-md-4">
                 siderbar
@@ -47,7 +39,7 @@
             <div class="col-md-2">
                 <footer>
                     this footer
-                    <a href="<?=BASE_URL;?>admin">Admin Panel</a>
+                    <a href="{{'admin' | url }}">Admin Panel</a>
                 </footer>
             </div>
         </div>
