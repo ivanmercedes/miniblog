@@ -9,6 +9,7 @@
         "phroute/phroute": "^2.1",
         "twig/twig": "^3.0",
         "illuminate/database": "^7.21",
-        "vlucas/phpdotenv": "^5.1"
+        "vlucas/phpdotenv": "^5.1",
+        "siriusphp/validation": "^3.0"
     }
 }

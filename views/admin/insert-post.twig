@@ -3,6 +3,17 @@
 {% block content %}
     <div class="aviso">
         <h1>New Post</h1>
+        {% if errors %}
+            <div class="alert alert-success">
+                <ul>
+                  {% for input, messages in errors %}
+                        {% for message in messages %}
+                            <li>{{ input }} {{ message }}</li>
+                        {% endfor %}
+                  {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
         {% if result %}
             <div class="alert alert-success">Post Saved</div>
         {% endif %}
