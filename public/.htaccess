@@ -1,0 +1,7 @@
+RewriteEngine On
+# verfica si existe el achivo
+RewriteCond %{REQUEST_FILENAME} !-f
+# verfica si existe el directorio
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?route=$1
+
