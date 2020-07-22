@@ -1,11 +1,30 @@
 <?php
-require_once '../database.php';
+// require_once '../database.php';
 require_once '../vendor/autoload.php';
 
 // Enable PHP errors
 ini_set('display_erros',1);
 ini_set('display_startup_errors',1);
 error_reporting(E_ALL);
+
+use Illuminate\Database\Capsule\Manager as Capsule;
+
+$capsule = new Capsule;
+
+$capsule->addConnection([
+    'driver'    => 'mysql',
+    'host'      => 'localhost',
+    'database'  => 'cursophp',
+    'username'  => 'root',
+    'password'  => '',
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+]);
+
+$capsule->setAsGlobal();
+
+$capsule->bootEloquent();
 
 $baseUrl = '';
 $baseDir = str_replace(basename($_SERVER['SCRIPT_NAME']), '',$_SERVER['SCRIPT_NAME']);
