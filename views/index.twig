@@ -6,9 +6,11 @@
         <div class="blog-post">
             <h2>{{ post.title }}</h2>
             <p>Jan 1, 2020 by <a href="">Jose</a> </p>
+            {% if post.img_url %}
             <div class="blog-post-image">
-                <img class="img-fluid" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/12A9B/production/_111434467_gettyimages-1143489763.jpg" alt="">
+                <img class="img-fluid" src="{{post.img_url}}" alt="">
             </div>
+            {% endif %}
             <div class="blog-post-content">
                 <p>{{ post.content }}</p>
             </div>

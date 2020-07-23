@@ -4,15 +4,7 @@
     <div class="aviso">
         <h1>New Post</h1>
         {% if errors %}
-            <div class="alert alert-success">
-                <ul>
-                  {% for input, messages in errors %}
-                        {% for message in messages %}
-                            <li>{{ input }} {{ message }}</li>
-                        {% endfor %}
-                  {% endfor %}
-                </ul>
-            </div>
+              {% include "partials/errors.twig" %}
         {% endif %}
         {% if result %}
             <div class="alert alert-success">Post Saved</div>
@@ -25,6 +17,10 @@
                 <div class="my-3">
                     <input type="text" class="form-control" name="title" placeholder="Title">
                 </div>
+
+                  <div class="my-3">
+                    <input type="text" class="form-control" name="img" placeholder="Images URL">
+                 </div>
 
                 <div class="my-3">
                     <textarea name="content" id="inputContent" class="form-control" rows="10"></textarea>

@@ -2,13 +2,23 @@
 
 namespace App\Controllers\Admin;
 
+use App\Models\User;
 use App\Controllers\BaseController;
 
 class IndexController extends BaseController{
 
     public function getIndex(){
-        // return render('../views/admin/index.php');
-        return $this->view('admin/index.twig');
+        if(isset($_SESSION['userId'])){
+            $userId = $_SESSION['userId'];
+            $user = User::find($userId);
+
+            if($user){
+                return $this->view('admin/index.twig',['user'=>$user]);
+            }
+        }
+
+        header('Location: '.BASE_URL.'auth/login');
+        
     }
 
 }

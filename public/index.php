@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Enable PHP errors
 ini_set('display_erros',1);
 ini_set('display_startup_errors',1);
@@ -41,9 +41,23 @@ $route = $_GET['route'] ?? '/';
 
 use Phroute\Phroute\RouteCollector;
 $router = new RouteCollector();
+
+$router->filter('auth', function (){
+    if(!isset($_SESSION['userId'])){
+        header('Location:' .BASE_URL.'auth/login');
+        return false;
+    }
+});
+
 // all router define by controllers
-$router->controller('/admin', App\Controllers\Admin\IndexController::class);
-$router->controller('/admin/posts', App\Controllers\Admin\PostController::class);
+$router->controller('/auth', App\Controllers\AuthController::class);
+
+$router->group(['before'=>'auth'],function ($router){
+    $router->controller('/admin', App\Controllers\Admin\IndexController::class);
+    $router->controller('/admin/posts', App\Controllers\Admin\PostController::class);
+    $router->controller('/admin/users', App\Controllers\Admin\UserController::class);
+});
+
 $router->controller('/', App\Controllers\IndexController::class);
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
