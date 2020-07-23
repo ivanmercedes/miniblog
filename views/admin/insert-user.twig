@@ -1,0 +1,35 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    <div class="aviso">
+        <h1>New User</h1>
+        {% if errors %}
+              {% include "partials/errors.twig" %}
+        {% endif %}
+        {% if result %}
+            <div class="alert alert-success">User Saved</div>
+        {% endif %}
+    </div>
+            <h2>Posts</h2>
+            <a href="{{ 'admin/users' | url }}" class="btn btn-default">back</a>
+
+            <form  method="post">
+                <div class="my-3">
+                    <input type="text" class="form-control" name="name" placeholder="Name">
+                </div>
+
+                 <div class="my-3">
+                    <input type="text" class="form-control" name="email" placeholder="Email">
+                </div>
+
+                 <div class="my-3">
+                    <input type="password" class="form-control" name="password" placeholder="Password">
+                </div>
+
+                <div class="my-3">
+                    <input type="submit" class="btn btn-primary" value="Save">
+                </div>
+            
+            </form>
+{% endblock %}
+
